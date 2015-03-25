@@ -20,6 +20,11 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
+    @IBAction func showResults() {
+        let resultsController = self.storyboard?.instantiateViewControllerWithIdentifier("ResultsController") as! ResultsController
+        
+        self.presentViewController(resultsController, animated: true, completion: nil)
+    }
 
 }
 
