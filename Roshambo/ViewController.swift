@@ -22,7 +22,8 @@ class ViewController: UIViewController {
 
     @IBAction func showResults() {
         let resultsController = self.storyboard?.instantiateViewControllerWithIdentifier("ResultsController") as! ResultsController
-        
+
+        resultsController.userChoice = "rock"
         self.presentViewController(resultsController, animated: true, completion: nil)
     }
 
