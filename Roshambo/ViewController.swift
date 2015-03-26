@@ -23,9 +23,22 @@ class ViewController: UIViewController {
     @IBAction func showResults() {
         let resultsController = self.storyboard?.instantiateViewControllerWithIdentifier("ResultsController") as! ResultsController
 
-        resultsController.userChoice = "rock"
+        resultsController.userChoice = 0
         self.presentViewController(resultsController, animated: true, completion: nil)
     }
 
+    @IBAction func showResultsSegue() {
+        performSegueWithIdentifier("showResultsPaper", sender: nil)
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        let resultsController = segue.destinationViewController as! ResultsController
+        if segue.identifier == "showResultsPaper" {
+            resultsController.userChoice = 1
+        }
+        if segue.identifier == "showResultsScissors" {
+            resultsController.userChoice = 2
+        }
+    }
 }
 
