@@ -24,7 +24,8 @@ class ViewController: UIViewController {
         let resultsController = self.storyboard?.instantiateViewControllerWithIdentifier("ResultsController") as! ResultsController
 
         resultsController.userChoice = 0
-        self.presentViewController(resultsController, animated: true, completion: nil)
+        //self.presentViewController(resultsController, animated: true, completion: nil)
+        self.navigationController?.pushViewController(resultsController, animated: true)
     }
 
     @IBAction func showResultsSegue() {
@@ -32,12 +33,20 @@ class ViewController: UIViewController {
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        let resultsController = segue.destinationViewController as! ResultsController
-        if segue.identifier == "showResultsPaper" {
-            resultsController.userChoice = 1
-        }
-        if segue.identifier == "showResultsScissors" {
-            resultsController.userChoice = 2
+        switch segue.identifier!  {
+        case "showResultsPaper", "showResultsScissors":
+            let resultsController = segue.destinationViewController as! ResultsController
+            if segue.identifier == "showResultsPaper" {
+                resultsController.userChoice = 1
+            }
+            if segue.identifier == "showResultsScissors" {
+                resultsController.userChoice = 2
+            }
+        case "showHistory":
+            println("showHistory segue")
+        default:
+            println("unknown identifier")
+            
         }
     }
 }

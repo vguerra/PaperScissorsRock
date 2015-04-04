@@ -65,7 +65,8 @@ class ResultsController: UIViewController {
     }
     
     @IBAction func dismissView() {
-        self.dismissViewControllerAnimated(true, completion: nil)
+        //self.dismissViewControllerAnimated(true, completion: nil)
+        self.navigationController?.popToRootViewControllerAnimated(true)
     }
     
     func displayMessage(message: String) {
